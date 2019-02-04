@@ -11,7 +11,7 @@ echo "Checking if a PR command..."
 (jq -r ".issue.pull_request.url" "$GITHUB_EVENT_PATH") || exit 78
 
 # get the SHA to revert
-COMMIT_TO_REVERT=(jq -r ".comment.body" "$GITHUB_EVENT_PATH" | cut -c 9-)
+COMMIT_TO_REVERT=$(jq -r ".comment.body" "$GITHUB_EVENT_PATH" | cut -c 9-)
 
 if [[ "$(jq -r ".action" "$GITHUB_EVENT_PATH")" != "created" ]]; then
 	echo "This is not a new comment event!"
