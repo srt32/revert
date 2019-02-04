@@ -7,7 +7,7 @@ This Action is heavily inspired by [rebase](https://github.com/cirrus-actions/re
 ## Installation
 
 ```hcl
-workflow "Automatic Revret" {
+workflow "Automatic Revert" {
   on = "issue_comment"
   resolves = "Revert"
 }
