@@ -19,4 +19,26 @@ action "Revert" {
 }
 ```
 
+## If you are using new yml format for workflow file
+
+```
+name: Automatic Revert
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  revert-commit:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Automatic Revert
+      uses: srt32/revert@v0.0.1
+      with:
+       username: ${{ secrets.TOKEN }}
+ ```      
+
 This Action is heavily inspired by [rebase](https://github.com/cirrus-actions/rebase).
