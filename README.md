@@ -32,13 +32,15 @@ jobs:
   revert-commit:
 
     runs-on: ubuntu-latest
-    
+
+    if: contains(github.event.comment.body, '/revert')
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Automatic Revert
-      uses: srt32/revert@v0.0.1
-      with:
-       username: ${{ secrets.TOKEN }}
+      - uses: actions/checkout@v1
+      - name: Automatic Revert
+        uses: srt32/revert@v0.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  ```      
 
 This Action is heavily inspired by [rebase](https://github.com/cirrus-actions/rebase).
