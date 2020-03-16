@@ -7,6 +7,20 @@ After installation, comment `/revert <commit_sha>` to trigger the action.
 
 ## Installation
 
+```hcl
+workflow "Automatic Revert" {
+  on = "issue_comment"
+  resolves = "Revert"
+}
+
+action "Revert" {
+  uses = "srt32/revert@master"
+  secrets = ["GITHUB_TOKEN"]
+}
+```
+
+## If you are using new yml format for workflow file
+
 ```
 name: Automatic Revert
 
